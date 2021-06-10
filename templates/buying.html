@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Stock Lookup
+{% endblock %}
+
+{% block main %}
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Symbol</th>
+      <th scope="col">Company name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Funds</th>
+      <th scope="col">Shares</th>
+      <th scope="col">Options</th>
+      
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{session["symbol"]}}</td>
+      <td>{{session["merchant"]}}</td>
+      <td>{{session["price"]}}</td>
+      <td>{{session["funds"]}}</td>
+      <form action="/finalize_purchase" method="post"><br><br>
+      <td><input autocomplete="off" autofocus class="form-control" name="shares" placeholder="Shares" type="text"> </td>
+      <td><button class="btn btn-primary" type="submit">Buy</button></td></td>
+      
+      </form>
+    </tr>
+   
+  </tbody>
+</table>
+
+        
+{% endblock %}
+
+

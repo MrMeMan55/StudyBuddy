@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+
+    <h1>Stock Buddy</h1><br><br>
+    <h3>Portfolio</h3>
+    
+    
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Vendor</th>
+      <th scope="col">Shares</th>
+      <th scope="col">TOP price</th>
+      <th scope="col">Current price</th>
+      <th scope="col">Original Value</th>
+      <th scope="col">Current Value</th>
+      
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    
+      {% for time in session["user_portfolio"] %}
+            <tr> <!--tr means table row-->
+                <td>{{ merchant["vendor"]}}</td><td>{{merchant["shares"]}}</td><td>{{merchant["TOP_price"]}}</td><td>{{merchant["current_price"]}}</td><td>{{merchant["original_value"]}}</td><td>{{merchant["current_value"]}}</td>
+            </tr>
+      {% endfor %}
+      
+    </tr>
+
+  </tbody>
+</table>
+    
+    
+    {{user_portfolio}}
+
+{% endblock %}

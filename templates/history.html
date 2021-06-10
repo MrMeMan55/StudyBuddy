@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Stock Lookup
+{% endblock %}
+
+{% block main %}
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Transaction Type</th>
+      <th scope="col">Company name</th>
+      <th scope="col">Symbol</th>
+
+      <th scope="col">Shares</th>
+      
+      
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {% for history in session["history"] %}
+            <tr> <!--tr means table row-->
+                <td>{{ history["Ttype"]}}</td><td>{{ history["merchant"]}}</td><td>{{ history["symbol"]}}</td><td>{{ history["shares"]}}</td>
+            </tr>
+      {% endfor %}
+      </form>
+    </tr>
+   
+  </tbody>
+</table>
+
+        
+{% endblock %}
+
+

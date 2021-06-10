@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Stock Lookup
+{% endblock %}
+
+{% block main %}
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Symbol</th>
+      <th scope="col">Company name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{session["info_list"][2]}}</td>
+      <td>{{session["info_list"][0]}}</td>
+      <td>{{session["info_list"][1]}}</td>
+      <td><button class="btn btn-primary" type="submit">Buy</button>  <button class="btn btn-primary btn disabled" type="submit">Sell</button></td>
+    </tr>
+   
+  </tbody>
+</table>
+
+        
+{% endblock %}
+
+

@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    apology
+{% endblock %}
+
+{% block main %}
+    {{message}}
+    <!--if the caller was login and session.caller is set to login, return user to login when clicked. else return to register-->
+    {% if session.caller=="login" %}
+        
+        <a href="/login">Click here to go Back.</a> 
+        
+    {% elif session.caller=="register" %}
+        <a href="/register">Click here to go back.</a>
+        
+    {% elif session.caller=="quote" %}
+        <a href="/quote">Click here to go back.</a>
+    {% elif session.caller=="buy" %}
+        <a href="/buy">Click here to go back.</a>
+    {% elif session.caller=="sell" %}
+        <a href="/sell">Click here to go back.</a>
+
+    {% endif %}
+    
+{% endblock %}

@@ -1,0 +1,161 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+
+  <thead>
+
+
+
+  </thead>
+  <tbody>
+
+
+
+
+
+<div class="alert alert-primary" role="alert">
+  <!--<form action="/createEntry" method="post">    -->
+  <div class="container">
+    <div class="row">
+
+      <div class="pink col-12 col-lg-auto mb-2">
+       <input size="col-lg-md" type="text" class="form-control" placeholder="What are you doing?">
+      </div>
+      <div class="col-md-auto col-sm-3 mb-1 ">
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Add goal
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-auto col-sm-3 mt-1">
+          <h1 class="numbers"><time>00:00:00</time></h1>
+      </div>
+      <div class="col-sm-3 mb-2">
+        <button id="start" class="buttons">start</button>
+          <button id="stop" class="buttons">stop</button>
+          <button id="clear" class="buttons">clear</button>
+      </div>
+      <div class="col ">
+
+        <button type="button" class="btn btn-primary align-center" data-bs-toggle="button"  autocomplete="off">Create Entry</button>
+        </form>
+      </div>
+      </div>
+    </div>
+    </form>
+  </div>
+
+
+
+      <script>
+var h1 = document.getElementsByTagName('h1')[0],
+    start = document.getElementById('start'),
+    stop = document.getElementById('stop'),
+    clear = document.getElementById('clear'),
+    seconds = 0, minutes = 0, hours = 0,
+    t;
+
+function add() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+        }
+    }
+
+    h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
+    timer();
+}
+function timer() {
+    t = setTimeout(add, 1000);
+}
+timer();
+
+
+/* Start button */
+start.onclick = timer;
+
+/* Stop button */
+stop.onclick = function() {
+    clearTimeout(t);
+}
+
+/* Clear button */
+clear.onclick = function() {
+    h1.textContent  = "00:00:00";
+    seconds = 0; minutes = 0; hours = 0;
+}
+</script>
+
+
+   </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+   <br>
+  <div>
+    <h3>
+      History
+    </h3>
+  </div>
+
+  <div class="row">
+
+   <table class="table">
+
+    <tr>
+
+      <th scope="col">Date</th>
+      <th scope="col">Activity</th>
+      <th scope="col">Start Time</th>
+      <th scope="col">End Time</th>
+      <th scope="col">Total Time</th>
+  </div>
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+      {% for time in session["user_times"] %}
+            <tr> <!--tr means table row-->
+                <td></td><td>{{time["task"]}}</td><td>{{time["start_time"]}}</td><td>{{time["end_time"]}}</td><td>{{time["total_time"]}}</td>
+            </tr>
+      {% endfor %}
+
+    </tr>
+  </table>
+
+  </div>
+  </tbody>
+
+
+
+    {{user_portfolio}}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+<!--make company symbol lookup tool. maybe make it automatically plug in the symbol when the company is selected.-->
+<!-- add a buy button to the quote page-->
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Stock Lookup
+{% endblock %}
+
+{% block main %}
+
+
+        <p class="h3">To retrieve information on a companies stock, search their symbol or name.</p>
+        
+        <form action="/quote" method="post"><br><br>
+            
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Symbol" type="text">
+            </div>
+
+            <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+        
+
+{% endblock %}

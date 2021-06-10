@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+
+    <h1> Welcome to Stock Buddy!</h1>
+    
+    
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Vendor</th>
+      <th scope="col">Symbol</th>
+      <th scope="col">Shares</th>
+      <th scope="col">TOP price</th>
+      <th scope="col">Current price</th>
+      <th scope="col">Original Value</th>
+      <th scope="col">Current Value</th>
+      
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    
+      {% for merchant in session["user_portfolio"] %}
+            <tr> <!--tr means table row-->
+                <td>{{ merchant["vendor"]}}</td><td>{{ merchant["symbol"]}}</td><td>{{merchant["shares"]}}</td><td>{{merchant["TOP_price"]}}</td><td>{{merchant["current_price"]}}</td><td>{{merchant["original_value"]}}</td><td>{{merchant["current_value"]}}</td>
+            </tr>
+      {% endfor %}
+</table>      
+    <tr> 
+          <br><br><br><br>
+              <p1> Input symbol and shares of stock to be sold.</p1><br><br>
+              <form action="/sell" method="post"><br><br>
+                <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Symbol" type="text">
+                <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="Shares" type="text"> 
+                <button class="btn btn-primary" type="submit">Sell</button>
+              </form>
+              
+         
+    </tr>
+
+  </tbody>
+
+    
+    
+    {{user_portfolio}}
+
+{% endblock %}
