@@ -7,6 +7,8 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
+#the os package allows cs50 to connect with heroku's postgres database. 
+import os
 
 from helpers import apology, login_required, lookup,  usd
 
@@ -34,9 +36,9 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///goalify.db")
+db = SQL("os.getenv("postgres://paqsfgxpkmfhen:4b7dd8c9231e5f7267a273da9752d8ad5f8fc0e3f244d0886c0b26a46a6f0882@ec2-54-145-224-156.compute-1.amazonaws.com:5432/dfv0mrn2kuap3j"))
 
-# Make sure API key is set
+# Make sure API key is set  
 #if not os.environ.get("API_KEY"):
 #    raise RuntimeError("API_KEY not set")
 
