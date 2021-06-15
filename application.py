@@ -15,12 +15,6 @@ from helpers import apology, login_required, lookup,  usd
 # Configure application
 app = Flask(__name__)
 
-#new
-import re
-uri = os.getenv("DATABASE_URL")  # or other relevant config var
-if uri.startswith("postgres://"):
-    uri = uri.replace("postgres://", "postgresql://", 1)
-# rest of connection code using the connection string `uri`
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
